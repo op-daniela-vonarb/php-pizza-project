@@ -1,6 +1,6 @@
 <?php
 
-    include 'config/db_connect.php';
+    include 'includes/dbh.inc.php';
 
     // write query for all pizzas
     $sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
