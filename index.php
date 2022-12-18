@@ -3,7 +3,7 @@
     include 'includes/dbh.inc.php';
 
     // write query for all pizzas
-    $sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
+    $sql = 'SELECT title, ingredients, id FROM pizzas';
 
     // make query & get result
     $result = mysqli_query($conn, $sql);
@@ -60,3 +60,4 @@
     <?php include 'partials/footer.php' ?>
     
 </html>
+
