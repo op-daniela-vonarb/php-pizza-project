@@ -5,17 +5,16 @@ if(isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
 
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
+    // Instantiate SingupContr class
+    include "../classes/dbh.class.php";
+    include "../classes/login.class.php";
+    include "../classes/login-contr.class.php";
 
-    if(emptyInputLogin($username, $pwd) !== false) {
-        header("Location: ../login.php?error=emptyinput");
-        exit();
-    }
+    $login = new LoginContr($username, $pwd);
 
-    loginUser($conn, $username, $pwd);
+    // Running error handlers and user signup
+    $login->loginUser();
 
-}else {
-    header("Location: ../login.php");
-    exit();
+    // Going to back to front page
+    header("location: ../index.php?error=none");
 }
