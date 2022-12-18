@@ -20,27 +20,27 @@ class SignupContr extends Signup {
     public function signupUser() {
         if($this->emptyInput() == false) {
             // echo "Empty input!";
-            header("location: ../index.php?error=emptyinput");
+            header("location: ../signup.php?error=emptyinput");
             exit();
         }
         if($this->invalidUid() == false) {
             // echo "Invalid username!";
-            header("location: ../index.php?error=username");
+            header("location: ../signup.php?error=username");
             exit();
         }
         if($this->invalidEmail() == false) {
             // echo "invalid email!";
-            header("location: ../index.php?error=email");
+            header("location: ../signup.php?error=email");
             exit();
         }
         if($this->pwdMatch() == false) {
             // echo "passwords don't match!";
-            header("location: ../index.php?error=passwordmatch");
+            header("location: ../signup.php?error=passwordmatch");
             exit();
         }
         if($this->uidTakenCheck() == false) {
             // echo "username or email taken";
-            header("location: ../index.php?error=useroremailtaken");
+            header("location: ../signup.php?error=useroremailtaken");
             exit();
         }
 
