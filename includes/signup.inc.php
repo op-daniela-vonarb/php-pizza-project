@@ -7,12 +7,12 @@ if(isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
-
-    // Instantiate SingupContr class
+    
     include "../classes/dbh.class.php";
     include "../classes/signup.class.php";
     include "../classes/signup-contr.class.php";
 
+    // Instantiate SingupContr class
     $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
 
     // Running error handlers and user signup

@@ -5,9 +5,6 @@
     include "classes/pizzasview.class.php"; 
     include "includes/pizzas.inc.php"; 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
