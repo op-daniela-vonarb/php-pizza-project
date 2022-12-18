@@ -9,9 +9,9 @@ if(isset($_POST["submit"])) {
     $pwdRepeat = $_POST["pwdrepeat"];
 
     // Instantiate SingupContr class
-    include "../classes/dbh.classes.php";
-    include "../classes/signup.classes.php";
-    include "../classes/signup-contr.classes.php";
+    include "../classes/dbh.class.php";
+    include "../classes/signup.class.php";
+    include "../classes/signup-contr.class.php";
 
     $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
 
