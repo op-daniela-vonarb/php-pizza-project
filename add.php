@@ -1,6 +1,6 @@
 <?php
 
-    include 'config/db_connect.php';
+    include 'includes/dbh.inc.php';
 
     $title = $email = $ingredients = '';
     $errors = array('email' => '', 'title' => '', 'ingredients' => '');
