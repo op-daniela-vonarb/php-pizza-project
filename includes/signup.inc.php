@@ -11,12 +11,21 @@ if(isset($_POST["submit"])) {
     include "../classes/dbh.class.php";
     include "../classes/signup.class.php";
     include "../classes/signup-contr.class.php";
+    include '../classes/user-validator.class.php';
 
     // Instantiate SingupContr class
+
+    $validation = new UserValidator($name, $email, $username, $pwd, $pwdRepeat);
+    $errors = $validation->validateForm();
+
+
     $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
+    $signup->signupUser();
+
 
     // Running error handlers and user signup
-    $signup->signupUser();
+    // $errors = $validation->validateForm();
+    // $signup->signupUser();
 
     // Going to back to front page
     header("location: ../index.php?error=none");
