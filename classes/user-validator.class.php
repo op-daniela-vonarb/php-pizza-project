@@ -1,14 +1,15 @@
 <?php
 
-class UserValidator extends SignupContr {
+class UserValidator{
 
     private $data = [];
     private $errors = [];
     private static $fields = ['name', 'email', 'uid', 'pwd', 'pwdrepeat'];
 
-    public function __construct($name, $email, $username, $pwd, $pwdRepeat) {
+    public function __construct($post_data) {
         // $this->data = [$this->name, $this->email, $this->username, $this->pwd, $this->pwdRepeat];
-        $this->data = [$name, $email, $username, $pwd, $pwdRepeat];
+        $this->data = $post_data;
+        // print_r($this->data);
 
     }
 

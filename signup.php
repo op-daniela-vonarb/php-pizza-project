@@ -1,6 +1,27 @@
 <?php
     include_once 'partials/header.php';
 
+
+    if(isset($_POST["submit"])) {
+    
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $username = $_POST["uid"];
+        $pwd = $_POST["pwd"];
+        $pwdRepeat = $_POST["pwdrepeat"];
+        
+        // include "../classes/dbh.class.php";
+        // include "../classes/signup.class.php";
+        // include "../classes/signup-contr.class.php";
+        include 'classes/user-validator.class.php';
+    
+        // Instantiate SingupContr class
+    
+        $validation = new UserValidator($_POST);
+        $errors = $validation->validateForm();
+    }
+
+
     // $errors = array('name' => '', 'email' => '', 'uid' =>'', 'pwd' => '', 'pwdrepeat' => '');
 
     // if(isset($_GET["error"])) {
@@ -32,8 +53,8 @@
     <div class="index-login-signup">
         <h4>SIGN UP</h4>
         <p>Don't have an account yet? Sign up here!</p>
-        <form action="includes/signup.inc.php" method="post">
-            <input type="text" name="name"  value="<?php echo htmlspecialchars($_POST['name']?? '') ?>" placeholder="Full name...">
+        <form action="signup.php" method="POST">
+            <input type="text" name="name"  value="<?php echo ($_POST['name'] ?? '') ?>" placeholder="Full name...">
             <div class="error"><?php echo $errors['name'] ?? '' ?></div>
 
             <!-- <div><?php //echo $errors['name']; ?></div> -->
@@ -54,7 +75,7 @@
 
             <!-- <div><?php //echo $errors['pwdrepeat']; ?></div> -->
             <br>
-            <button type="submit" name="submit">SIGN UP</button>
+            <button type="submit" value="submit" name="submit">Submit</button>
         </form>
     </div>
 
