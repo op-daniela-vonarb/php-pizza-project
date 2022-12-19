@@ -1,6 +1,6 @@
 <?php
-    include_once 'partials/header.php';
-    include 'classes/user-validator.class.php';
+    include_once "partials/header.php";
+    include "classes/signup-validator.class.php";
     include "classes/dbh.class.php";
     include "classes/signup.class.php";
     include "classes/signup-contr.class.php";
@@ -13,7 +13,7 @@
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdrepeat"];
     
-        $validation = new UserValidator($_POST);
+        $validation = new SignupValidator($_POST);
         $errors = $validation->validateForm();
 
         // if no errors, sign up user

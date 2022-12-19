@@ -1,6 +1,6 @@
 <?php
 
-class UserValidator{
+class SignupValidator{ // why can't I extend to SignupContr?
 
     private $data = [];
     private $errors = [];
@@ -22,6 +22,8 @@ class UserValidator{
         $this->validateEmail();
         $this->validatePwd();
         $this->validatePwdRepeat();
+        $this->pwdMatch();
+        // $this->uidTakenCheck();
         return $this->errors;
 
     }
@@ -32,8 +34,8 @@ class UserValidator{
         if(empty($val)) {
             $this->addError('name', 'name cannot be empty');
         } else{
-            if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)) {
-                $this->addError('name', 'name must be 6-12 chars & alphanumeric');
+            if(!preg_match('/^[a-zA-Z0-9]{6,25}$/', $val)) {
+                $this->addError('name', 'name must be 6-25 chars & alphanumeric');
             }
         }
     }
@@ -44,8 +46,8 @@ class UserValidator{
         if(empty($val)) {
             $this->addError('uid', 'username cannot be empty');
         } else{
-            if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)) {
-                $this->addError('uid', 'username must be 6-12 chars & alphanumeric');
+            if(!preg_match('/^[a-zA-Z0-9]{4,25}$/', $val)) {
+                $this->addError('uid', 'username must be 4-25 chars & alphanumeric');
             }
         }
     }
@@ -77,6 +79,25 @@ class UserValidator{
             $this->addError('pwdrepeat', 'password cannot be empty');
         } 
     }
+
+        private function pwdMatch() {
+            $val = $this->data['pwd'];
+            $val2 = $this->data['pwdrepeat'];
+
+            if($val !== $val2) {
+                $this->addError('pwd', 'passwords do not match');
+            }
+        }
+
+ 
+    // private function uidTakenCheck() {
+    //     $val = ($this->data['uid']);
+    //     $val2 = ($this->data['email']);
+
+    //     if($this->checkUser($this->val, $this->val2) == false) {
+    //         $this->addError('email', 'email already taken');
+    //     }   
+    // }
 
     private function addError($key, $val) {
         $this->errors[$key] = $val;

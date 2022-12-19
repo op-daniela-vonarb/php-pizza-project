@@ -46,11 +46,11 @@ class SignupContr extends Signup {
         //     header("location: ../signup.php?error=passwordmatch");
         //     exit();
         // }
-        // if($this->uidTakenCheck() == false) {
-        //     // echo "username or email taken";
-        //     header("location: ../signup.php?error=useroremailtaken");
-        //     exit();
-        // }
+        if($this->uidTakenCheck() == false) {
+            echo "username or email taken";
+            header("location: signup.php?error=useroremailtaken");
+            exit();
+        }
 
         $this->setUser($this->name, $this->email, $this->username, $this->pwd);
 
@@ -96,15 +96,15 @@ class SignupContr extends Signup {
     //     return $result;
     // }
 
-    // private function uidTakenCheck() {
-    //     $result = '';
-    //     if(!$this->checkUser($this->username, $this->email)) {
-    //         $result = false;
-    //     }
-    //     else {
-    //         $result = true;
-    //     }
-    //     return $result;
-    // }
+    private function uidTakenCheck() {
+        $result = '';
+        if(!$this->checkUser($this->username, $this->email)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return $result;
+    }
 
 }
