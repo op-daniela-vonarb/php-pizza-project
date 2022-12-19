@@ -1,6 +1,9 @@
 <?php
     include_once 'partials/header.php';
-
+    include 'classes/user-validator.class.php';
+    include "classes/dbh.class.php";
+    include "classes/signup.class.php";
+    include "classes/signup-contr.class.php";
 
     if(isset($_POST["submit"])) {
     
@@ -9,78 +12,46 @@
         $username = $_POST["uid"];
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdrepeat"];
-        
-        // include "../classes/dbh.class.php";
-        // include "../classes/signup.class.php";
-        // include "../classes/signup-contr.class.php";
-        include 'classes/user-validator.class.php';
-    
-        // Instantiate SingupContr class
     
         $validation = new UserValidator($_POST);
         $errors = $validation->validateForm();
+
+        // if no errors, sign up user
+        if(!$errors){
+            $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
+            $signup->signupUser();
+            header("location: index.php?error=none");
+        } else echo 'there are errors';
+
     }
 
-
-    // $errors = array('name' => '', 'email' => '', 'uid' =>'', 'pwd' => '', 'pwdrepeat' => '');
-
-    // if(isset($_GET["error"])) {
-
-    //     if($_GET["error"] == "emptyinput") {
-    //         $errors['name'] = 'Fill in all fields!';
-    //     }
-    //     else if ($_GET["error"] == "username") {
-    //         $errors['uid'] = 'Choose a proper username!';
-    //     }
-    //     else if ($_GET["error"] == "email") {
-    //         $errors['email'] = 'Choose a proper email!';
-    //     }
-    //     else if ($_GET["error"] == "passwordmatch") {
-    //         $errors['pwd'] = 'Passwords do not match!';
-    //     }
-    //     else if ($_GET["error"] == "stmtfailed") {
-    //         echo '<p>Something went wrong! Try again!</p>';
-    //     }
-    //     else if ($_GET["error"] == "useroremailtaken") {
-    //         $errors['uid'] = 'Choose a different username';
-    //     }
-    //     else if ($_GET["error"] == "none") {
-    //         echo "<p>You have signed up</p>";
-    //     }
-    // }
+     
 ?>
  
     <div class="index-login-signup">
         <h4>SIGN UP</h4>
         <p>Don't have an account yet? Sign up here!</p>
         <form action="signup.php" method="POST">
-            <input type="text" name="name"  value="<?php echo ($_POST['name'] ?? '') ?>" placeholder="Full name...">
+
+            <input type="text" name="name"  value="<?php echo htmlspecialchars($_POST['name'] ?? '') ?>" placeholder="Full name...">
             <div class="error"><?php echo $errors['name'] ?? '' ?></div>
 
-            <!-- <div><?php //echo $errors['name']; ?></div> -->
             <input type="text" name="email" value="<?php echo htmlspecialchars($_POST['email']?? '') ?>" placeholder="Email...">
             <div class="error"><?php echo $errors['email'] ?? '' ?></div>
 
-            <!-- <div><?php //echo $errors['email']; ?></div> -->
             <input type="text" name="uid" value="<?php echo htmlspecialchars($_POST['uid']?? '') ?>"  placeholder="Username...">
             <div class="error"><?php echo $errors['uid'] ?? '' ?></div>
 
-            <!-- <div><?php //echo $errors['uid']; ?></div> -->
             <input type="password" name="pwd" value="<?php echo htmlspecialchars($_POST['pwd']?? '') ?>"  placeholder="Password...">
             <div class="error"><?php echo $errors['pwd'] ?? '' ?></div>
 
-            <!-- <div><?php //echo $errors['pwd']; ?></div> -->
             <input type="password" name="pwdrepeat" value="<?php echo htmlspecialchars($_POST['pwdrepeat']?? '') ?>"  placeholder="Repeat Password...">
             <div class="error"><?php echo $errors['pwdrepeat'] ?? '' ?></div>
 
-            <!-- <div><?php //echo $errors['pwdrepeat']; ?></div> -->
             <br>
             <button type="submit" value="submit" name="submit">Submit</button>
         </form>
     </div>
-
-
-
 
 <?php
     include_once 'partials/footer.php';

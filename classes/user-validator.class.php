@@ -7,10 +7,7 @@ class UserValidator{
     private static $fields = ['name', 'email', 'uid', 'pwd', 'pwdrepeat'];
 
     public function __construct($post_data) {
-        // $this->data = [$this->name, $this->email, $this->username, $this->pwd, $this->pwdRepeat];
         $this->data = $post_data;
-        // print_r($this->data);
-
     }
 
     public function validateForm() {
