@@ -29,6 +29,10 @@
             position: relative;
             top: -30px;
         }
+        .error{
+            color: coral;
+        }
+        
   </style>
 </head>
     <body class="grey lighten-4">

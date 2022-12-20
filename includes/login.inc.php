@@ -9,10 +9,10 @@ if(isset($_POST["submit"])) {
     include "../classes/login.class.php";
     include "../classes/login-contr.class.php";
 
-    // Instantiate SingupContr class
+    // Instantiate LoginContr class
     $login = new LoginContr($username, $pwd);
 
-    // Running error handlers and user signup
+    // Running error handlers and user login
     $login->loginUser();
 
     // Going to back to front page
