@@ -23,7 +23,7 @@ class Login extends Dbh {
 
         if($checkPwd == false) {
             $stmt = null;
-            header("location: ../index.php?error=wrongpassword");
+            header("location: ../login.php?error=wrongpassword");
             exit();
         }
         elseif($checkPwd == true) {

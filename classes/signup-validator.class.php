@@ -34,8 +34,8 @@ class SignupValidator{ // why can't I extend to SignupContr?
         if(empty($val)) {
             $this->addError('name', 'name cannot be empty');
         } else{
-            if(!preg_match('/^[a-zA-Z0-9]{6,25}$/', $val)) {
-                $this->addError('name', 'name must be 6-25 chars & alphanumeric');
+            if(!preg_match("/^[a-z ,.'-]+$/i", $val)) {
+                $this->addError('name', 'name must be alphanumeric');
             }
         }
     }
