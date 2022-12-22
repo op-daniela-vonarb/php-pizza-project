@@ -6,6 +6,9 @@
     include "classes/signup-contr.class.php";
 
     if(isset($_POST["submit"])) {
+
+        $validation = new SignupValidator($_POST);
+        $errors = $validation->validateForm();
     
         $name = $_POST["name"];
         $email = $_POST["email"];
@@ -13,8 +16,6 @@
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdrepeat"];
     
-        $validation = new SignupValidator($_POST);
-        $errors = $validation->validateForm();
 
         // if no errors, sign up user
         if(!$errors){
@@ -33,19 +34,19 @@
         <p>Don't have an account yet? Sign up here!</p>
         <form action="signup.php" method="POST">
 
-            <input type="text" name="name"  value="<?php echo htmlspecialchars($_POST['name'] ?? '') ?>" placeholder="Full name...">
+            <input type="text" name="name"  value="<?php echo htmlspecialchars($name ?? '') ?>" placeholder="Full name...">
             <div class="error"><?php echo $errors['name'] ?? '' ?></div>
 
-            <input type="text" name="email" value="<?php echo htmlspecialchars($_POST['email']?? '') ?>" placeholder="Email...">
+            <input type="text" name="email" value="<?php echo htmlspecialchars($email ?? '') ?>" placeholder="Email...">
             <div class="error"><?php echo $errors['email'] ?? '' ?></div>
 
-            <input type="text" name="uid" value="<?php echo htmlspecialchars($_POST['uid']?? '') ?>"  placeholder="Username...">
+            <input type="text" name="uid" value="<?php echo htmlspecialchars($username ?? '') ?>"  placeholder="Username...">
             <div class="error"><?php echo $errors['uid'] ?? '' ?></div>
 
-            <input type="password" name="pwd" value="<?php echo htmlspecialchars($_POST['pwd']?? '') ?>"  placeholder="Password...">
+            <input type="password" name="pwd" value="<?php echo htmlspecialchars($pwd ?? '') ?>"  placeholder="Password...">
             <div class="error"><?php echo $errors['pwd'] ?? '' ?></div>
 
-            <input type="password" name="pwdrepeat" value="<?php echo htmlspecialchars($_POST['pwdrepeat']?? '') ?>"  placeholder="Repeat Password...">
+            <input type="password" name="pwdrepeat" value="<?php echo htmlspecialchars($pwdRepeat ?? '') ?>"  placeholder="Repeat Password...">
             <div class="error"><?php echo $errors['pwdrepeat'] ?? '' ?></div>
 
             <br>

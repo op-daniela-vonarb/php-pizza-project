@@ -3,7 +3,7 @@
 class SignupValidator{ // why can't I extend to SignupContr?
 
     private $data = [];
-    private $errors = [];
+    private $errors = []; // static?
     private static $fields = ['name', 'email', 'uid', 'pwd', 'pwdrepeat'];
 
     public function __construct($post_data) {
