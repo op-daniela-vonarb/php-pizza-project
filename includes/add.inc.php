@@ -1,23 +1,28 @@
 <?php
 
-$pizza = ['title' => '', 'ingredients' => ''];
 
-if(isset($_POST["submit"])) {
+// $pizza = ['title' => '', 'ingredients' => ''];
+// $errors = ['title' => '', 'ingredients' => ''];
 
-    $title = $_POST["title"];
-    $ingredients = $_POST["ingredients"];
 
-    include "../classes/dbh.class.php";
-    include "../classes/add.class.php";
-    include "../classes/add-contr.class.php";
+// if(isset($_POST["submit"])) {
 
-    // Instantiate LoginContr class
-    $add = new AddContr($title, $ingredients);
+//     $title = $_POST["title"];
+//     $ingredients = $_POST["ingredients"];
 
-    // Running error handlers and user login
-    $pizza = $add->addPizza();
-    // print_r($pizza);   
+//     include "../classes/dbh.class.php";
+//     include "../classes/add.class.php";
+//     include "../classes/add-contr.class.php";
 
-    // Going to back to front page
-    header("location: ../index.php?error=none");
-}
+
+//     $add = new AddContr($title, $ingredients);
+ 
+//     $errors = $add->validateForm();
+  
+//     if(!$errors) {
+//          $pizza = $add->addPizza();
+//          header("location: ../index.php?error=none");
+    
+//     } else header("location: ../add.php?error");
+ 
+// }
