@@ -1,5 +1,7 @@
 <?php
 
+$pizza = ['title' => '', 'ingredients' => ''];
+
 if(isset($_POST["submit"])) {
 
     $title = $_POST["title"];
@@ -13,7 +15,8 @@ if(isset($_POST["submit"])) {
     $add = new AddContr($title, $ingredients);
 
     // Running error handlers and user login
-    $add->addPizza();
+    $pizza = $add->addPizza();
+    // print_r($pizza);   
 
     // Going to back to front page
     header("location: ../index.php?error=none");

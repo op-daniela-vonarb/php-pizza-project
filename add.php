@@ -1,15 +1,9 @@
 <?php
     include "includes/add.inc.php";
 
-    $title = '';
-    $ingredients = '';
-
-    // if(isset($_POST["submit"])) {
-
-    // $title = $_POST["title"];
-    // $ingredients = $_POST["ingredients"];
-    // }
-
+    $title = $pizza['title'];
+    $ingredients = $pizza['ingredients'];
+    
     $errors = array('title' => '', 'ingredients' => '');
 
     if(isset($_GET["error"])) {
@@ -71,11 +65,11 @@
         <h4 class="center">Add a Pizza</h4>
         <form action="includes/add.inc.php" class="white" method="POST">
             <label>Pizza Title:</label>
-            <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>">
-            <div class="red-text"><?php echo $errors['title']; ?></div>
+            <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?? '' ?>">
+            <div class="red-text"><?php echo $errors['title'] ?? ''?></div>
             <label>Ingredients (comma separated):</label>
-            <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
-            <div class="red-text"><?php echo $errors['ingredients']; ?></div>
+            <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?? '' ?>">
+            <div class="red-text"><?php echo $errors['ingredients'] ?? '' ?></div>
             <div class="center">
                 <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
             </div>
