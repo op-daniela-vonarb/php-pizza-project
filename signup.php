@@ -8,16 +8,14 @@
     if(isset($_POST["submit"])) {
 
         $validation = new SignupValidator($_POST);
-        $errors = $validation->validateForm();
-    
+        $errors = $validation->validateForm();      
+  
         $name = $_POST["name"];
         $email = $_POST["email"];
         $username = $_POST["uid"];
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdrepeat"];
     
-
-        // if no errors, sign up user
         if(!$errors){
             $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
             $signup->signupUser();
