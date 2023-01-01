@@ -1,10 +1,14 @@
 <?php
 
-    include "classes/dbh.class.php";
-    include "classes/pizzas.class.php";
-    include "classes/pizzasview.class.php"; 
-    include "includes/pizzas.inc.php"; 
+//    include "classes/dbh.class.php";
+//    include "classes/pizzas.class.php";
+//    include "classes/pizzasview.class.php";
+//    include "includes/pizzas.inc.php";
+	include("autoload.php");
+	include_once("classes/pizzas-contr.class.php");
 
+	$pizzaContr = new PizzasContr($_REQUEST);
+	$pizzaContr->handleRequest();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 
     <div class="container">
         <div class="row">
-            <?php foreach($pizzas as $pizza): ?>
+            <?php foreach($pizzaContr->Pizzas() as $pizza): ?>
 
                 <div class="col s6 md3">
                     <div class="card z-depth-0">

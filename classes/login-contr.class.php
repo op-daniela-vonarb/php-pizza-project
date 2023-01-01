@@ -1,33 +1,53 @@
 <?php
 
+require_once("interface/contr.interface.php");
 
-class LoginContr extends Login {
+class LoginContr extends Contr implements Controller {
 
-    private $username;
-    private $pwd;
+    private $userRepo;
 
-    public function __construct($username, $pwd) {
-        $this->username = $username;
-        $this->pwd = $pwd;
-    }
+
+	public function __construct($requestParams = [])
+	{
+		parent::__construct($requestParams);
+		$this->userRepo = new Users();
+	}
+
+	public function handleRequest()
+	{
+		if($this->requestParams && array_key_exists("submit", $this->requestParams)) {
+			$this->loginUser();
+		}
+	}
 
     public function loginUser() {
-        if($this->emptyInput() == false) {
-            header("location: ../index.php?error=emptyinput");
+        if($this->emptyInput()) {
+            header("location: login.php?error=emptyinput");
             exit();
         }
-        $this->getUser($this->username, $this->pwd);
+        if ($this->validateUser($this->requestParams['uid'], $this->requestParams['pwd'])) {
+			header("location: index.php");
+			exit();
+		}
     }
 
+	protected function validateUser($username, $pwd) {
+		$user = $this->userRepo->getUser($username);
+		if (!$user) {
+			header("location: login.php?error=usernotfound");
+			exit();
+		}
+		if (password_verify($pwd, $user["usersPwd"])) {
+//			$_SESSION["userid"] = $user["usersId"];
+//			$_SESSION["useruid"] = $user["usersUid"];
+			return AuthHelper::inst()->setCurrentUser($user);
+		}
+		header("location: login.php?error=wrongpassword");
+		exit();
+	}
+
     private function emptyInput() {
-        $result = '';
-        if(empty($this->username) || empty($this->pwd)) {
-            $result = false;
-        }
-        else {
-            $result = true;
-        }
-        return $result;
+        return empty($this->requestParams['uid']) || empty($this->requestParams['pwd']);
     }
 
 }

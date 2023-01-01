@@ -1,12 +1,19 @@
 <?php
-    include_once 'partials/header.php';
+include("autoload.php");
+include_once("classes/login-contr.class.php");
+
+$loginContr = new LoginContr($_REQUEST);
+$loginContr->handleRequest();
+
+
+include_once 'partials/header.php';
 ?>
 
      
     <div class="index-login-login">
         <h4>LOGIN</h4>
         <p>Don't have an account yet? Sign up here!</p>
-        <form action="includes/login.inc.php" method="post">
+        <form method="post">
             <input type="text" name="uid" placeholder="Username/Email...">
             <input type="password" name="pwd" placeholder="Password">
             <br>

@@ -1,14 +1,9 @@
 <?php
 
 
-class Pizzas extends Dbh {
-    
-    protected function getPizza() {
-        $sql = "SELECT * FROM pizzas";
-        $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([]);
+class Pizzas extends Repository
+{
 
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
-    }
+	protected $table = 'pizzas';
+
 }
