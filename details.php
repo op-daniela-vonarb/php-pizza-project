@@ -1,21 +1,25 @@
 <?php
 
-    include 'includes/dbh.inc.php';
+include "classes/dbh.class.php";
+include "classes/delete.class.php";
+include "classes/delete-contr.class.php";
 
-    if(isset($_POST['delete'])) {
+    // include 'includes/dbh.inc.php';
 
-        $id_to_delete = mysqli_real_escape_string($conn, $_POST['id_to_delete']);
+    // if(isset($_POST['delete'])) {
 
-        $sql = "DELETE FROM pizzas WHERE id = $id_to_delete";
+    //     $id_to_delete = mysqli_real_escape_string($conn, $_POST['id_to_delete']);
 
-        if(mysqli_query($conn, $sql)) {
+    //     $sql = "DELETE FROM pizzas WHERE id = $id_to_delete";
 
-            header("Location: index.php");
-        } else {
-            echo 'query error: ' . mysqli_error($conn);
-        }
+    //     if(mysqli_query($conn, $sql)) {
 
-    }
+    //         header("Location: index.php");
+    //     } else {
+    //         echo 'query error: ' . mysqli_error($conn);
+    //     }
+
+    // }
 
     // check GET request id param
     if(isset($_GET['id'])) {
