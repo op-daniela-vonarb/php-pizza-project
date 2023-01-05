@@ -25,8 +25,7 @@
         if(!$errors) {
              $add->addPizza();
              header("location: index.php?error=none");
-        
-        } else echo 'there are errors';
+        }
     }
 
 ?>
@@ -47,4 +46,4 @@
 
     </section>
 
-    <?php include 'partials/footer.php' ?>
+    <?php include_once 'partials/footer.php';?>

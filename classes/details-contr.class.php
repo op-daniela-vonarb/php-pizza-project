@@ -7,7 +7,4 @@ class DetailsContr extends Details {
         return $this->getDetails($id);
     }
 
-
-
-
 }

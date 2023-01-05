@@ -1,5 +1,7 @@
 <?php
 
+    include_once "partials/header.php";
+
     include "classes/dbh.class.php";
     include "classes/pizzas.class.php";
     include "classes/pizzasview.class.php"; 
@@ -9,9 +11,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-    <?php include 'partials/header.php' ?>
-
+  
     <h4 class="center grey-text">Pizzas!</h4>
 
     <div class="container">
@@ -40,7 +40,7 @@
 
     </div>
 
-    <?php include 'partials/footer.php' ?>
+    <?php include_once 'partials/footer.php'; ?>
     
 </html>
 

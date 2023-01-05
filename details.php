@@ -1,5 +1,7 @@
 <?php
 
+include_once "partials/header.php";
+
 include "classes/dbh.class.php";
 include "classes/details.class.php";
 include "classes/details-contr.class.php";
@@ -29,8 +31,6 @@ if(isset($_POST['delete'])) {
 <!DOCTYPE html>
 <html>
 
-	<?php include('partials/header.php'); ?>
-
     <div class="container center grey-text">
 		<?php if($pizza): ?>
 
@@ -58,6 +58,6 @@ if(isset($_POST['delete'])) {
 		<?php endif ?>
 	</div>
 
-	<?php include('partials/footer.php'); ?>
+    <?php include_once 'partials/footer.php'; ?>
 
 </html>
