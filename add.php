@@ -1,13 +1,5 @@
 <?php
-    // require "includes/add.inc.php";
-
-    // $title = $pizza['title'];
-    // $ingredients = $pizza['ingredients'];
-
-    // $errorTitle = $errors['title'];
-    // $errorIng = $errors['ingredients'];
-
-
+  
     include_once "partials/header.php";
     include "classes/dbh.class.php";
     include "classes/add.class.php";
