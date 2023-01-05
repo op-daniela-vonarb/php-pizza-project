@@ -20,8 +20,7 @@
             $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
             $signup->signupUser();
             header("location: index.php?error=none");
-        } else echo 'there are errors';
-
+        }
     }
 
      
