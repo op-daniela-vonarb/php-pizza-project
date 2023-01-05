@@ -4,8 +4,8 @@
 class Delete extends Dbh {
     
     protected function deletePizza($id) {
-        $sql = "DELETE FROM pizzas(title, ingredients) VALUES(?)";
+        $sql = "DELETE FROM pizzas WHERE id = $id";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute(array($id));
+        $stmt->execute(array());
     }
 }
