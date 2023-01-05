@@ -30,7 +30,11 @@
 							</ul>
                         </div>
                          <div class="card-action right-align">
-                            <a href="details.php?id=<?php echo $pizza['id'] ?>" class="brand-text">more info</a>
+                            <!-- <a href="details.php?id=<?php //echo $pizza['id'] ?>" class="brand-text">more info</a> -->
+                            <form action="details.php" method="POST">
+                            <input type="hidden" name="id_to_details" value="<?php echo $pizza['id'] ?>">
+                            <input type="submit" name="details" value="MORE INFO" class="btn brand z-depth-0">
+                            </form>
                         </div>
                     </div>
                 </div>

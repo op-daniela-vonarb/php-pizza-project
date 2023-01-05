@@ -7,11 +7,19 @@ include "classes/details.class.php";
 include "classes/details-contr.class.php";
 include "includes/details.inc.php";
 
-if(isset($_GET['id'])){
+// if(isset($_GET['id'])){
 
-    $id = $_GET['id'];
+//     $id = $_GET['id'];
+//     $data = new DetailsContr();
+//     $pizza = $data->showDetails($id);
+// }
+
+if(isset($_POST['details'])) { //which method is better: GET or POST? See lines 10-15
+
+    $id_to_details = $_POST['id_to_details'];
     $data = new DetailsContr();
-    $pizza = $data->showDetails($id);
+    $pizza = $data->showDetails($id_to_details);
+  
 }
 
 ?>
@@ -23,7 +31,6 @@ if(isset($_GET['id'])){
 		<?php if($pizza): ?>
 
 			<h4><?php echo htmlspecialchars($pizza['title']); ?></h4>
-			<p>Created by <?php //echo htmlspecialchars($pizza['email']); ?></p>
 			<h5>Ingredients:</h5>
 			<p><?php echo htmlspecialchars($pizza['ingredients']); ?></p>
 
