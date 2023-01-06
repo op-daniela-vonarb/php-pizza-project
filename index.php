@@ -4,7 +4,7 @@
 
     include "classes/dbh.class.php";
     include "classes/pizzas.class.php";
-    include "classes/pizzasview.class.php"; 
+    include "classes/pizzas-contr.class.php"; 
     include "includes/pizzas.inc.php"; 
 
 ?>

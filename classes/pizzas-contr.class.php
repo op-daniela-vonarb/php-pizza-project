@@ -1,7 +1,7 @@
 
 <?php
 
-class PizzasView extends Pizzas {
+class PizzasContr extends Pizzas {
 
     public function showPizza() {
         $results = $this->getPizza();
