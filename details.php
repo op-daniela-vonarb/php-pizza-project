@@ -19,7 +19,6 @@ if(isset($_POST['details'])) { //which method is better: GET or POST? See lines 
     $id_to_details = $_POST['id_to_details'];
     $data = new DetailsContr();
     $pizza = $data->showDetails($id_to_details);
-  
 }
 
 ?>
@@ -35,7 +34,7 @@ if(isset($_POST['details'])) { //which method is better: GET or POST? See lines 
 			<p><?php echo htmlspecialchars($pizza['ingredients']); ?></p>
 
             <?php
-                include "delete.php"
+                include "delete.php" // used to have the delete form directly in here
             ?>
 
 

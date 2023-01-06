@@ -14,12 +14,7 @@ class AddContr extends Add {
 
     public function addPizza() {
         $this->setPizza($this->title, $this->ingredients);
-        // $this->getPizza();
     }
-
-    // public function getPizza() {
-    //     return array('title' => $this->title, 'ingredients' => $this->ingredients);
-    // }
 
     public function validateForm() {
         $this->validateTitle();
