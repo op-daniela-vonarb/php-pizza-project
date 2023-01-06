@@ -1,7 +1,7 @@
 <?php
 
 // if(isset($_POST["submit"])) {
-
+  
 //     include "../classes/dbh.class.php";
 //     include "../classes/add.class.php";
 //     include "../classes/add-contr.class.php";
@@ -13,10 +13,11 @@
  
 //     $errors = $add->validateForm();
   
+  
 //     if(!$errors) {
 //          $add->addPizza();
 //          header("location: ../index.php?error=none");
 //     } else {
-//         header("location: ../add.php");
+//         include("../add.php");
 //     }
 // }

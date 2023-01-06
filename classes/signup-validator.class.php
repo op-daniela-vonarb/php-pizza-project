@@ -1,6 +1,6 @@
 <?php
 
-class SignupValidator{ // why can't I extend to SignupContr?
+class SignupValidator extends Signup {
 
     private $data = [];
     private $errors = []; // static?
@@ -23,9 +23,8 @@ class SignupValidator{ // why can't I extend to SignupContr?
         $this->validatePwd();
         $this->validatePwdRepeat();
         $this->pwdMatch();
-        // $this->uidTakenCheck();
+        $this->uidTakenCheck();
         return $this->errors;
-
     }
 
     private function validateName() {
@@ -80,24 +79,21 @@ class SignupValidator{ // why can't I extend to SignupContr?
         } 
     }
 
-        private function pwdMatch() {
-            $val = $this->data['pwd'];
-            $val2 = $this->data['pwdrepeat'];
+    private function pwdMatch() {
+        $val = $this->data['pwd'];
+        $val2 = $this->data['pwdrepeat'];
 
-            if($val !== $val2) {
-                $this->addError('pwd', 'passwords do not match');
-            }
+        if($val !== $val2) {
+            $this->addError('pwd', 'passwords do not match');
         }
+    }
 
  
-    // private function uidTakenCheck() {
-    //     $val = ($this->data['uid']);
-    //     $val2 = ($this->data['email']);
-
-    //     if($this->checkUser($this->val, $this->val2) == false) {
-    //         $this->addError('email', 'email already taken');
-    //     }   
-    // }
+    private function uidTakenCheck() {
+        if(!$this->checkUser($this->data['uid'], $this->data['email'])) {
+            $this->addError('email', 'email already taken');
+        }
+    }
 
     private function addError($key, $val) {
         $this->errors[$key] = $val;

@@ -1,11 +1,16 @@
 <?php
     include_once "partials/header.php";
-    include "classes/signup-validator.class.php";
-    include "classes/dbh.class.php";
-    include "classes/signup.class.php";
-    include "classes/signup-contr.class.php";
+    // include "classes/signup-validator.class.php";
+    // include "classes/dbh.class.php";
+    // include "classes/signup.class.php";
+    // include "classes/signup-contr.class.php";
 
     if(isset($_POST["submit"])) {
+
+        include "classes/dbh.class.php";
+        include "classes/signup.class.php";
+        include "classes/signup-contr.class.php";
+        include "classes/signup-validator.class.php";
 
         $validation = new SignupValidator($_POST);
         $errors = $validation->validateForm();      
