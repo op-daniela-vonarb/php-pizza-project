@@ -1,34 +1,17 @@
 <?php
 
-    include 'includes/dbh.inc.php';
+    include_once "partials/header.php";
 
-    // write query for all pizzas
-    $sql = 'SELECT title, ingredients, id FROM pizzas';
-
-    // make query & get result
-    $result = mysqli_query($conn, $sql);
-
-    // fetch the resulting rows as an array
-    $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    // free result from memory
-    mysqli_free_result($result);
-
-    // close connection
-    mysqli_close($conn);
-
-    //print_r($pizzas);
-
-
-
+    include "classes/dbh.class.php";
+    include "classes/pizzas.class.php";
+    include "classes/pizzas-contr.class.php"; 
+    include "includes/pizzas.inc.php"; 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-    <?php include 'partials/header.php' ?>
-
+  
     <h4 class="center grey-text">Pizzas!</h4>
 
     <div class="container">
@@ -39,15 +22,19 @@
                     <div class="card z-depth-0">
                         <img src="img/pizza.svg" class="pizza">
                         <div class="card-content center">
-                            <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
+                            <h6><?php echo ($pizza['title']); ?></h6>
                             <ul class="grey-text">
 								<?php foreach(explode(',', $pizza['ingredients']) as $ing): ?>
 									<li><?php echo htmlspecialchars($ing); ?></li>
 								<?php endforeach; ?>
 							</ul>
                         </div>
-                        <div class="card-action right-align">
-                            <a href="details.php?id=<?php echo $pizza['id'] ?>" class="brand-text">more info</a>
+                         <div class="card-action right-align">
+                            <!-- <a href="details.php?id=<?php //echo $pizza['id'] ?>" class="brand-text">more info</a> -->
+                            <form action="details.php" method="POST">
+                            <input type="hidden" name="id_to_details" value="<?php echo $pizza['id'] ?>">
+                            <input type="submit" name="details" value="MORE INFO" class="btn brand z-depth-0">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -57,7 +44,7 @@
 
     </div>
 
-    <?php include 'partials/footer.php' ?>
+    <?php include_once 'partials/footer.php'; ?>
     
 </html>
 

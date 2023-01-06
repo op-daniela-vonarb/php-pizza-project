@@ -29,12 +29,16 @@
             position: relative;
             top: -30px;
         }
+        .error{
+            color: coral;
+        }
+        
   </style>
 </head>
     <body class="grey lighten-4">
         <nav class="white z-depth-0">
             <div class="container">
-                <a href="index.php" class="brand-logo brand-text">Ninja Pizza</a>
+                <a href="index.php" class="brand-logo brand-text">Daniela's Pizza</a>
                 <ul id="nav-mobile" class="right hide-on-small-and-down">
 
                     <?php
