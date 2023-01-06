@@ -8,16 +8,10 @@ The page has signup, login and logut functionality.
 After I got all the features working, I started refactoring my code into oop php.
 
 ## Comments
-#### - main branch: procedural PHP version
-#### - oop branch: OOP PHP version
 #### - My very first PHP project :-) So it's probably a bit messy
 
 #### - login.php and signup.php forms and error handling are not consistent yet because I used different tutorials. I will do this at a later stage.
 #### - Form validation is very basic at this stage
-
-####
-
-###
 
 ## Questions
 
