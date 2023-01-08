@@ -1,11 +1,11 @@
 <?php
 
-include_once "partials/header.php";
+include_once "../partials/header.php";
 
-include "classes/dbh.class.php";
-include "classes/details.class.php";
-include "classes/details-view.class.php";
-include "includes/details.inc.php";
+include "../classes/dbh.class.php";
+include "../src/Model/details.class.php";
+include "../src/Controller/details-view.class.php";
+include "../src/includes/details.inc.php";
 
 // if(isset($_GET['id'])){
 
@@ -43,6 +43,6 @@ if(isset($_POST['details'])) { //which method is better: GET or POST? See lines 
 		<?php endif ?>
 	</div>
 
-    <?php include_once 'partials/footer.php'; ?>
+    <?php include_once '../partials/footer.php'; ?>
 
 </html>

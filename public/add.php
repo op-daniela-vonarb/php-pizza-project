@@ -1,9 +1,9 @@
 <?php
   
-    include_once "partials/header.php";
-    include "classes/dbh.class.php";
-    include "classes/add.class.php";
-    include "classes/add-contr.class.php";
+    include_once "../partials/header.php";
+    include "../classes/dbh.class.php";
+    include "../src/Model/add.class.php";
+    include "../src/Controller/add-contr.class.php";
 
     // if(isset($_POST["submit"])) {
 
@@ -40,4 +40,4 @@
 
     </section>
 
-    <?php include_once 'partials/footer.php';?>
+    <?php include_once '../partials/footer.php';?>

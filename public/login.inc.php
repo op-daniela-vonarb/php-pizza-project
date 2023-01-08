@@ -6,8 +6,8 @@ if(isset($_POST["submit"])) {
     $pwd = $_POST["pwd"];
 
     include "../classes/dbh.class.php";
-    include "../classes/login.class.php";
-    include "../classes/login-contr.class.php";
+    include "../src/Model/login.class.php";
+    include "../src/Controller/login-contr.class.php";
 
     // Instantiate LoginContr class
     $login = new LoginContr($username, $pwd);
@@ -16,5 +16,5 @@ if(isset($_POST["submit"])) {
     $login->loginUser();
 
     // Going to back to front page
-    header("location: ../index.php?error=none");
+    header("location: index.php?error=none");
 }

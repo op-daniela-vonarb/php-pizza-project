@@ -46,7 +46,7 @@
                     {
                     ?>
                     <li><a class="btn brand z-depth-0"><?php echo $_SESSION["useruid"]; ?></a></li>
-                    <li><a href="includes/logout.inc.php" class="btn brand z-depth-0">LOGOUT</a></li>
+                    <li><a href="logout.inc.php" class="btn brand z-depth-0">LOGOUT</a></li>
                     <li><a href="add.php" class="btn brand z-depth-0">Add a Pizza</a></li>
 
                     <?php

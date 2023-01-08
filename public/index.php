@@ -1,11 +1,11 @@
 <?php
 
-    include_once "partials/header.php";
+    include_once "../partials/header.php";
 
-    include "classes/dbh.class.php";
-    include "classes/pizzas.class.php";
-    include "classes/pizzas-view.class.php"; 
-    include "includes/pizzas.inc.php"; 
+    include "../classes/dbh.class.php";
+    include "../src/Model/pizzas.class.php";
+    include "../src/Controller/pizzas-view.class.php"; 
+    include "../src/includes/pizzas.inc.php"; 
 
 ?>
 
@@ -44,7 +44,7 @@
 
     </div>
 
-    <?php include_once 'partials/footer.php'; ?>
+    <?php include_once '../partials/footer.php'; ?>
     
 </html>
 
