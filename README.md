@@ -18,11 +18,12 @@ After I got all the features working, I started refactoring my code into oop php
 ### 1. Does my file structure make sense?
 **Classes**:
 - DBH class connects to the database
-- FILENAME.class.php = Models -> read from and write to the database
-- FILENAME-contr.class.php = Controllers -> constructors
+- FILENAME.class.php = Models -> talk to the database
+- FILENAME-contr.class.php = Controllers -> handle user input -> talk to the Model class
+- FILENAME-view.class.php = Views -> show the data from the database on the website -> talk to the Controller class
 
 **includes**
-- helper files -> instantiate classes
+- helper files -> instantiate classes -> user gets send to these files once they submit the forms
 
 **partials**
 - header and footer that show on every page

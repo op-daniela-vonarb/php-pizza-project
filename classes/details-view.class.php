@@ -1,7 +1,7 @@
 <?php
 
 
-class DetailsContr extends Details {
+class DetailsView extends Details {
 
     public function showDetails($id) {
         return $this->getDetails($id);

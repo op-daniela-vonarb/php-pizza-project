@@ -4,7 +4,7 @@ include_once "partials/header.php";
 
 include "classes/dbh.class.php";
 include "classes/details.class.php";
-include "classes/details-contr.class.php";
+include "classes/details-view.class.php";
 include "includes/details.inc.php";
 
 // if(isset($_GET['id'])){
@@ -17,7 +17,7 @@ include "includes/details.inc.php";
 if(isset($_POST['details'])) { //which method is better: GET or POST? See lines 10-15
 
     $id_to_details = $_POST['id_to_details'];
-    $data = new DetailsContr();
+    $data = new DetailsView();
     $pizza = $data->showDetails($id_to_details);
 }
 

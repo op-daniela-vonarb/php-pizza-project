@@ -1,4 +1,4 @@
 <?php
 
-$data = new PizzasContr();
+$data = new PizzasView();
 $pizzas = $data->showPizza();
