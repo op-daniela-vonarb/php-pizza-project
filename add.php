@@ -5,10 +5,12 @@
     include "classes/add.class.php";
     include "classes/add-contr.class.php";
 
-    if(isset($_POST["submit"])) {
+    // if(isset($_POST["submit"])) {
 
-        $title = $_POST["title"];
-        $ingredients = $_POST["ingredients"];
+    if($_SERVER["REQUEST_METHOD"] == "POST"){ // is this method saver? Do I still need htmlspecialchars in the form below? Line 31
+
+        $title = htmlspecialchars($_POST["title"], ENT_QUOTES, 'UTF-8');
+        $ingredients = htmlspecialchars($_POST["ingredients"], ENT_QUOTES, 'UTF-8');
         
         $add = new AddContr($title, $ingredients);
      
