@@ -58,6 +58,8 @@ I couldn't find a way around this so I decided to instantiate the classes direct
 
 ### 4. In case it's good practise to have a validator class, do I have to create a seperate one for login? Or is it possible to create a validator class that can be reused?
 
+### 5. What is better practice: if(isset($_POST["submit"])) or if($_SERVER["REQUEST_METHOD"] == "POST") ?
+
 
 
 
