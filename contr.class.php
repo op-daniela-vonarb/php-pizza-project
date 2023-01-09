@@ -12,7 +12,7 @@ class Contr {
 		$this->requestParams = $requestParams;
 	}
 
-	public function clearCurrentUser()
+	public function clearCurrentUser() // why is this in Contr class? Function not used. There is another clearCurrentUser() in auth-helper.class
 	{
 		$_SESSION["userid"] = null;
 		$_SESSION["useruid"] = null;

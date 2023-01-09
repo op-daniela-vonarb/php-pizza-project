@@ -6,7 +6,7 @@ class Repository {
 
 	public function getById($id)
 	{
-		return Dbh::inst()->fetchById($this->table, $id);
+		return Dbh::inst()->fetchById($this->table, $id); // why do we have access to Dbh?
 	}
 
 	public function all() {

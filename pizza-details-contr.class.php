@@ -12,7 +12,7 @@ class PizzaDetailsContr extends Contr implements Controller {
 	public function __construct($requestParams = [])
 	{
 		parent::__construct($requestParams);
-		$this->pizzaRepo = new Pizzas();
+		$this->pizzaRepo = new Pizzas(); // why do we have access to the Pizzas class?
 	}
 
 	public function handleRequest()

@@ -5,8 +5,9 @@
 	include("autoload.php");
 	include_once("pizzas-contr.class.php");
 
-	$pizzaContr = new PizzasContr($_REQUEST);
-	$pizzaContr->handleRequest();
+	$pizzaContr = new PizzasContr($_REQUEST); // what's in $_REQUEST?
+    print_r($pizzaContr);
+	$pizzaContr->handleRequest(); // does this function do something?
 
 ?>
 

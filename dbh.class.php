@@ -59,9 +59,9 @@ class Dbh {
 		return $stmt;
 	}
 
-	public static function inst()
+	public static function inst() // I don't really understand this
 	{
-		global $settings;
+		global $settings; // why global?
 
 		if (!self::$_inst) {
 			self::$_inst = new self($settings['db_host'], $settings['db_name'], $settings['db_user'], $settings['db_password']);

@@ -4,11 +4,8 @@ include("autoload.php");
 include_once("login-contr.class.php");
 
 $loginContr = new LoginContr($_REQUEST);
-print_r($loginContr);
 $loginContr->handleRequest();
-// $params = $loginContr[0][0];
-print_r($_REQUEST);
-// echo $params;
+
 
 
 include_once 'partials/header.php';

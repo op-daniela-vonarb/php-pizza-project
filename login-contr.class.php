@@ -10,7 +10,7 @@ class LoginContr extends Contr implements Controller {
 	public function __construct($requestParams = [])
 	{
 		parent::__construct($requestParams);
-		$this->userRepo = new Users();
+		$this->userRepo = new Users(); // why do we have access to Users?
 	}
 
 	public function handleRequest()
