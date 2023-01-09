@@ -4,7 +4,21 @@ include("autoload.php");
 include_once("login-contr.class.php");
 
 $loginContr = new LoginContr($_REQUEST);
+print_r($loginContr); // how do I get uid and pwd so I can echo it in the form below?
 $loginContr->handleRequest();
+
+
+if(isset($_GET["error"])) {
+    if($_GET["error"] == "emptyinput") {
+        $errors['uid'] = 'Fill in all fields!';
+    }
+    else if ($_GET["error"] == "wrongpassword") {
+        $errors['pwd'] = 'Incorrect login information';
+    }
+    else if ($_GET["error"] == "usernotfound") {
+        $errors['uid'] = 'User not found';
+    }
+}
 
 
 
@@ -23,14 +37,7 @@ include_once 'partials/header.php';
             <button type="submit" name="submit">LOGIN</button>
         </form> 
         <?php
-        if(isset($_GET["error"])) {
-            if($_GET["error"] == "emptyinput") {
-                echo "<p>Fill in all fields!</p>";
-            }
-            else if ($_GET["error"] == "wronglogin") {
-                echo "<p>Incorrect login information</p>";
-            }
-        }
+
     ?>        
     </div>
 <?php
