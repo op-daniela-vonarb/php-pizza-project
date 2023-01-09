@@ -8,7 +8,6 @@ include_once("pizza-details-contr.class.php");
 
 
 $pizzaContr = new PizzaDetailsContr($_REQUEST);
-print_r($_REQUEST);
 $pizzaContr->handleRequest();
 
 

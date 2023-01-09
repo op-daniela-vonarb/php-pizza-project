@@ -1,5 +1,7 @@
 <?php
 
+// Do I need to write all db functions in here? e.g. delete, add...
+
 class Dbh {
 
 	private static $_inst;
@@ -36,7 +38,7 @@ class Dbh {
     }
 
 	public function deleteById($table, $id) {
-		$stmt = $this->query("DELETE FROM  $table where id = ?", [$id]);
+		$stmt = $this->query("DELETE FROM  $table where id = ?", [$id]); // why [$id]?
 		return $stmt->rowCount();
 	}
 
@@ -61,7 +63,7 @@ class Dbh {
 
 	public static function inst() // I don't really understand this
 	{
-		global $settings; // why global?
+		global $settings; // why global? Is this coming from settings.php?
 
 		if (!self::$_inst) {
 			self::$_inst = new self($settings['db_host'], $settings['db_name'], $settings['db_user'], $settings['db_password']);
