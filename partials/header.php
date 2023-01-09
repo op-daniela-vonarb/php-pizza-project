@@ -1,7 +1,7 @@
 <?php
-
-    session_start();
-    
+    include("autoload.php");
+    include_once("auth-helper.class.php");
+    $auth = AuthHelper::inst();
 ?>
 
 <head>
@@ -42,11 +42,11 @@
                 <ul id="nav-mobile" class="right hide-on-small-and-down">
 
                     <?php
-                    if(isset($_SESSION["useruid"]))
+                    if($auth->isLoggedIn())
                     {
                     ?>
-                    <li><a class="btn brand z-depth-0"><?php echo $_SESSION["useruid"]; ?></a></li>
-                    <li><a href="logout.inc.php" class="btn brand z-depth-0">LOGOUT</a></li>
+                    <li><a class="btn brand z-depth-0"><?php echo $auth->getCurrentUserId(); ?></a></li>
+                    <li><a href="logout.php" class="btn brand z-depth-0">LOGOUT</a></li>
                     <li><a href="add.php" class="btn brand z-depth-0">Add a Pizza</a></li>
 
                     <?php

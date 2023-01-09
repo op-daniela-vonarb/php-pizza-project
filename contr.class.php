@@ -1,7 +1,7 @@
 
 <?php
 
-require_once("../interface/contr.interface.php");
+require_once("contr.interface.php");
 
 class Contr {
 

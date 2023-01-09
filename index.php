@@ -1,11 +1,12 @@
 <?php
 
-    include_once "../partials/header.php";
+    include_once "partials/header.php";
 
-    include "../classes/dbh.class.php";
-    include "../src/Model/pizzas.class.php";
-    include "../src/Controller/pizzas-view.class.php"; 
-    include "../src/includes/pizzas.inc.php"; 
+	include("autoload.php");
+	include_once("pizzas-contr.class.php");
+
+	$pizzaContr = new PizzasContr($_REQUEST);
+	$pizzaContr->handleRequest();
 
 ?>
 
@@ -16,7 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <?php foreach($pizzas as $pizza): ?>
+            <?php foreach($pizzaContr->Pizzas() as $pizza): ?>
 
                 <div class="col s6 md3">
                     <div class="card z-depth-0">
@@ -44,7 +45,7 @@
 
     </div>
 
-    <?php include_once '../partials/footer.php'; ?>
+    <?php include_once 'partials/footer.php'; ?>
     
 </html>
 

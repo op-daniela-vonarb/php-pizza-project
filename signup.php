@@ -1,5 +1,5 @@
 <?php
-    include_once "../partials/header.php";
+    include_once "partials/header.php";
     // include "classes/signup-validator.class.php";
     // include "classes/dbh.class.php";
     // include "classes/signup.class.php";
@@ -7,10 +7,10 @@
 
     if(isset($_POST["submit"])) {
 
-        include "../classes/dbh.class.php";
-        include "../src/Model/signup.class.php";
-        include "../src/Controller/signup-contr.class.php";
-        include "../src/Model/signup-validator.class.php";
+        include "dbh.class.php";
+        include "signup.class.php";
+        include "signup-contr.class.php";
+        include "signup-validator.class.php";
 
         $validation = new SignupValidator($_POST);
         $errors = $validation->validateForm();      
@@ -57,5 +57,5 @@
     </div>
 
 <?php
-    include_once '../partials/footer.php';
+    include_once 'partials/footer.php';
 ?>
