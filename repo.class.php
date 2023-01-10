@@ -13,4 +13,6 @@ class Repository {
 		return Dbh::inst()
 			->fetchAll("SELECT * FROM {$this->table}");
 	}
+
+	// add a function for delete?
 }
