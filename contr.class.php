@@ -1,9 +1,9 @@
 
 <?php
 
-require_once("contr.interface.php");
+require_once("contr.interface.php"); // why do we need to require this in here?
 
-class Contr {
+class Contr { // I don't understand why we need this class
 
 	protected $requestParams;
 
