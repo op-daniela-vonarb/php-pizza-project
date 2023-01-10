@@ -40,6 +40,12 @@ class Dbh {
 		return $stmt->rowCount();
 	}
 
+	public function addPizza($table, $title, $ingredients){
+		$stmt = $this->query("INSERT INTO $table(title, ingredients) VALUES(?,?)", [$title, $ingredients]);
+		return $stmt;
+	}
+
+
 	public function fetchById($table, $id) {
 		$records = $this->fetchAll("SELECT * FROM $table where id = ?", [$id]);
 		if (count($records)) {

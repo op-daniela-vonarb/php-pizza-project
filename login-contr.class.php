@@ -5,13 +5,14 @@ require_once("contr.interface.php");
 class LoginContr extends Contr implements Controller {
 
     private $userRepo;
-
-
+	
 	public function __construct($requestParams = [])
 	{
 		parent::__construct($requestParams);
 		$this->userRepo = new Users();
 	}
+
+
 
 	public function handleRequest()
 	{
@@ -20,10 +21,14 @@ class LoginContr extends Contr implements Controller {
 		}
 	}
 
-	// public function getUserData($uid){
-	// 	return $uid;
-	// 	}
-	
+	public function UserData() {
+		if($this->requestParams && array_key_exists("uid", $this->requestParams)){
+			$uid = $this->requestParams['uid'];
+        	return $uid;
+		}
+
+    }
+
 
     public function loginUser() {
         if($this->emptyInput()) {

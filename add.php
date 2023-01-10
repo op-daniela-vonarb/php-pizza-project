@@ -1,26 +1,27 @@
 <?php
   
-    include_once "../partials/header.php";
-    include "../classes/dbh.class.php";
-    include "../src/Model/add.class.php";
-    include "../src/Controller/add-contr.class.php";
+    include_once "partials/header.php";
+    include("autoload.php");
+    include_once("add-contr.class.php");
 
-    // if(isset($_POST["submit"])) {
+    $addContr = new AddContr($_REQUEST);
+    $addContr->handleRequest();
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){ // is this method saver? Do I still need htmlspecialchars in the form below? Line 31
 
-        $title = htmlspecialchars($_POST["title"], ENT_QUOTES, 'UTF-8');
-        $ingredients = htmlspecialchars($_POST["ingredients"], ENT_QUOTES, 'UTF-8');
+    // if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    //     $title = htmlspecialchars($_POST["title"], ENT_QUOTES, 'UTF-8');
+    //     $ingredients = htmlspecialchars($_POST["ingredients"], ENT_QUOTES, 'UTF-8');
         
-        $add = new AddContr($title, $ingredients);
+    //     $add = new AddContr($title, $ingredients);
      
-        $errors = $add->validateForm();
+    //     $errors = $add->validateForm();
       
-        if(!$errors) {
-             $add->addPizza();
-             header("location: index.php?error=none");
-        }
-    }
+    //     if(!$errors) {
+    //          $add->addPizza();
+    //          header("location: index.php?error=none");
+    //     }
+    // }
 
 ?>
 
@@ -40,4 +41,4 @@
 
     </section>
 
-    <?php include_once '../partials/footer.php';?>
+    <?php include_once 'partials/footer.php';?>
