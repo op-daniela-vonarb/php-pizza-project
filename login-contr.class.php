@@ -10,7 +10,7 @@ class LoginContr extends Contr implements Controller {
 	public function __construct($requestParams = [])
 	{
 		parent::__construct($requestParams);
-		$this->userRepo = new Users(); // why do we have access to Users?
+		$this->userRepo = new Users();
 	}
 
 	public function handleRequest()
@@ -38,8 +38,6 @@ class LoginContr extends Contr implements Controller {
 			exit();
 		}
 		if (password_verify($pwd, $user["usersPwd"])) {
-//			$_SESSION["userid"] = $user["usersId"];
-//			$_SESSION["useruid"] = $user["usersUid"];
 			return AuthHelper::inst()->setCurrentUser($user);
 		}
 		header("location: login.php?error=wrongpassword");

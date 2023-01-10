@@ -7,7 +7,7 @@
 
 	$pizzaContr = new PizzasContr($_REQUEST);
     print_r($pizzaContr);
-	$pizzaContr->handleRequest(); // does this function do something?
+	$pizzaContr->handleRequest();
 
 ?>
 

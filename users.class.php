@@ -6,7 +6,7 @@ class Users extends Repository
 
 	public function getUser($username)
 	{
-		$users = Dbh::inst() // why do we have access to Dbh?
+		$users = Dbh::inst()
 			->fetchAll(
 				"SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;",
 				[$username, $username]);
