@@ -14,5 +14,7 @@ class Repository {
 			->fetchAll("SELECT * FROM {$this->table}");
 	}
 
-	// add a function for delete?
+	public function removeById($id) {
+		return Dbh::inst()->deleteById($this->table, $id);
+	}
 }

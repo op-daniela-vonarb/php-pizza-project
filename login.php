@@ -4,8 +4,9 @@ include("autoload.php");
 include_once("login-contr.class.php");
 
 $loginContr = new LoginContr($_REQUEST);
-print_r($loginContr); // how do I get uid and pwd so I can echo it in the form below?
 $loginContr->handleRequest();
+
+
 
 
 if(isset($_GET["error"])) {

@@ -20,6 +20,11 @@ class LoginContr extends Contr implements Controller {
 		}
 	}
 
+	// public function getUserData($uid){
+	// 	return $uid;
+	// 	}
+	
+
     public function loginUser() {
         if($this->emptyInput()) {
             header("location: login.php?error=emptyinput");

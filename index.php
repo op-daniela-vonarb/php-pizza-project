@@ -6,8 +6,7 @@
 	include_once("pizzas-contr.class.php");
 
 	$pizzaContr = new PizzasContr($_REQUEST);
-    print_r($pizzaContr);
-	$pizzaContr->handleRequest();
+    $pizzaContr->handleRequest();
 
 ?>
 
