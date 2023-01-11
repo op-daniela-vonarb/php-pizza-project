@@ -5,6 +5,7 @@ require_once("contr.interface.php");
 class LoginContr extends Contr implements Controller {
 
     private $userRepo;
+	private $errors = [];
 	
 	public function __construct($requestParams = [])
 	{
@@ -12,41 +13,66 @@ class LoginContr extends Contr implements Controller {
 		$this->userRepo = new Users();
 	}
 
-
-
 	public function handleRequest()
-	{
-		if($this->requestParams && array_key_exists("submit", $this->requestParams)) {
-			$this->loginUser();
+    {
+        if($this->requestParams && array_key_exists("submit", $this->requestParams)) {
+            $this->validateForm();
+            if(!$this->errors){
+                $this->loginUser();
+            }
+        }
+    }
+
+    public function loginUser() {
+
+        $this->validateUser($this->requestParams['uid'], $this->requestParams['pwd']);
+	    }
+
+	public function validateForm(){
+		$this->validateUid();
+		$this->validatePwd();
+		return $this->errors;
+	}
+
+	private function validateUid() {
+		$val = $this->requestParams['uid'];
+
+		if(empty($val)) {
+			$this->addError('uid', 'A username/email is required');
 		}
 	}
 
-    public function loginUser() {
-        if($this->emptyInput()) {
-            header("location: login.php?error=emptyinput");
-            exit();
-        }
-        if ($this->validateUser($this->requestParams['uid'], $this->requestParams['pwd'])) {
-			header("location: index.php");
-			exit();
-		}
-    }
+	private function validatePwd() {
+		$val = $this->requestParams['pwd'];
 
+		if(empty($val)) {
+			$this->addError('pwd', 'A password is required');
+		}
+	}
+	
 	protected function validateUser($username, $pwd) {
 		$user = $this->userRepo->getUser($username);
 		if (!$user) {
-			header("location: login.php?error=usernotfound");
-			exit();
+			$this->addError('uid', 'User not found');
+		
 		}
-		if (password_verify($pwd, $user["usersPwd"])) {
+		if (password_verify($pwd, $user['usersPwd'])) {
 			return AuthHelper::inst()->setCurrentUser($user);
+			header("location: index.php?error=none");
 		}
-		header("location: login.php?error=wrongpassword");
-		exit();
+		else {
+			$this->addError('pwd', 'Wrong password');
+		}
+		return $this->errors;
 	}
 
-    private function emptyInput() {
-        return empty($this->requestParams['uid']) || empty($this->requestParams['pwd']);
+
+	private function addError($key, $val) {
+		$this->errors[$key] = $val;
+	}
+
+	public function getErrors() {
+        return $this->errors;
     }
 
 	public function getUid() {

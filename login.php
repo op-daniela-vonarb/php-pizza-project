@@ -7,20 +7,7 @@ $loginContr = new LoginContr($_REQUEST);
 $loginContr->handleRequest();
 $uid = $loginContr->getUid();
 $pwd = $loginContr->getPwd();
-
-
-if(isset($_GET["error"])) {
-    if($_GET["error"] == "emptyinput") {
-        $errors['uid'] = 'Fill in all fields!';
-    }
-    else if ($_GET["error"] == "wrongpassword") {
-        $errors['pwd'] = 'Incorrect login information';
-    }
-    else if ($_GET["error"] == "usernotfound") {
-        $errors['uid'] = 'User not found';
-    }
-}
-
+$errors = $loginContr->getErrors();
 
 
 include_once 'partials/header.php';
