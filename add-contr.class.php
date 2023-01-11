@@ -19,7 +19,7 @@ class AddContr extends Contr implements Controller {
         if($this->requestParams && array_key_exists("submit", $this->requestParams)) {
             $this->validateForm();
             if(!$this->errors){
-                $this->pizzaRepo->insertPizza($this->requestParams['title'], $this->requestParams['ingredients']);
+                $this->pizzaRepo->insert($this->requestParams['title'], $this->requestParams['ingredients']);
                 header("location: index.php?error=none");
             }
         }

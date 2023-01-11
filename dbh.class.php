@@ -40,8 +40,8 @@ class Dbh {
 		return $stmt->rowCount();
 	}
 
-	public function addPizza($table, $title, $ingredients){
-		$stmt = $this->query("INSERT INTO $table(title, ingredients) VALUES(?,?)", [$title, $ingredients]);
+	public function add($table, $paramTitle, $paramName){
+		$stmt = $this->query("INSERT INTO $table(title, ingredients) VALUES(?,?)", [$paramTitle, $paramName]);
 		return $stmt;
 	}
 

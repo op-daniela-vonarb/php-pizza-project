@@ -18,7 +18,7 @@ class Repository {
 		return Dbh::inst()->deleteById($this->table, $id);
 	}
 
-	public function insertPizza($title, $ingredients) {
-		return Dbh::inst()->addPizza($this->table, $title, $ingredients);
+	public function insert($paramTitle, $paramName) {
+		return Dbh::inst()->add($this->table, $paramTitle, $paramName);
 	}
 }
