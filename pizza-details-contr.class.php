@@ -21,6 +21,10 @@ class PizzaDetailsContr extends Contr implements Controller {
 			$this->currentPizza = $this->pizzaRepo->getById($this->requestParams['id']);
 		}
 
+		if (array_key_exists('delete', $this->requestParams )) {
+			$this->pizzaRepo->removeById($this->requestParams['id']);
+			header("location: index.php");
+		}
 	}
 
 	public function Pizza() {

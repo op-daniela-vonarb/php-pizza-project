@@ -29,7 +29,7 @@ include_once 'partials/header.php';
     <div class="index-login-login">
         <h4>LOGIN</h4>
         <p>Don't have an account yet? Sign up here!</p>
-        <form method="post">
+        <form action="login.php" method="post">
             <input type="text" name="uid" value="<?php echo htmlspecialchars($uid ?? '') ?>"placeholder="Username/Email...">
             <div class="red-text"><?php echo $errors['uid'] ?? ''; ?></div>
             <input type="password" name="pwd" value="<?php echo htmlspecialchars($pwd ?? '') ?>"placeholder="Password">

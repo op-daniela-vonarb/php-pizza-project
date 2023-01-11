@@ -21,21 +21,6 @@ class LoginContr extends Contr implements Controller {
 		}
 	}
 
-	public function getUid() {
-		// check if it's empty
-		if(array_key_exists("uid", $this->requestParams)) {
-			return $this->requestParams['uid'];
-		}
-	}
-
-	public function getPwd() {
-		// check if it's empty
-		if(array_key_exists("pwd", $this->requestParams)) {
-			return $this->requestParams['pwd'];
-		}
-	}
-
-
     public function loginUser() {
         if($this->emptyInput()) {
             header("location: login.php?error=emptyinput");
@@ -63,5 +48,19 @@ class LoginContr extends Contr implements Controller {
     private function emptyInput() {
         return empty($this->requestParams['uid']) || empty($this->requestParams['pwd']);
     }
+
+	public function getUid() {
+		// check if it's empty
+		if(array_key_exists("uid", $this->requestParams)) {
+			return $this->requestParams['uid'];
+		}
+	}
+
+	public function getPwd() {
+		// check if it's empty
+		if(array_key_exists("pwd", $this->requestParams)) {
+			return $this->requestParams['pwd'];
+		}
+	}
 
 }

@@ -5,6 +5,8 @@ include_once "partials/header.php";
 include "autoload.php";
 include_once("pizza-details-contr.class.php");
 
+$auth = AuthHelper::inst();
+
 
 
 $pizzaContr = new PizzaDetailsContr($_REQUEST);
@@ -24,7 +26,17 @@ $pizzaContr->handleRequest();
 			<p><?php echo htmlspecialchars($pizzaContr->Pizza()['ingredients']); ?></p>
 
             <?php
-                include "delete.php" // used to have the delete form directly in here
+				if($auth->isLoggedIn())
+
+				{
+				?>
+				<form method="POST">
+					<!-- <input type="hidden" name="id_to_delete" value="<?php //echo $pizza['id'] ?>"> -->
+					<input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
+				</form>
+			
+				<?php
+				}
             ?>
 
 
