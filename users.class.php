@@ -15,4 +15,9 @@ class Users extends Repository
 		}
 		return null;
 	}
+
+	public function insert($name, $email, $username, $pwd) {
+		return Dbh::inst()->add("INSERT INTO $this->table(usersName, usersEmail, usersUid, usersPwd) VALUES(?,?,?,?)", [$name, $email, $username, $pwd]);
+	}
 }
+

@@ -18,7 +18,4 @@ class Repository {
 		return Dbh::inst()->deleteById($this->table, $id);
 	}
 
-	public function insert($paramTitle, $paramName) {
-		return Dbh::inst()->add($this->table, $paramTitle, $paramName);
-	}
 }

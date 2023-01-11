@@ -40,8 +40,8 @@ class Dbh {
 		return $stmt->rowCount();
 	}
 
-	public function add($table, $paramTitle, $paramName){
-		$stmt = $this->query("INSERT INTO $table(title, ingredients) VALUES(?,?)", [$paramTitle, $paramName]);
+	public function add($sql, $params = []){
+		$stmt = $this->query($sql, $params);
 		return $stmt;
 	}
 
