@@ -14,6 +14,7 @@
     if($auth->isLoggedIn())
 
     {
+    //no action attr needed in form?
     ?>
     <form method="POST">
         <!-- <input type="hidden" name="id_to_delete" value="<?php //echo $pizza['id'] ?>"> -->

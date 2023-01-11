@@ -5,23 +5,14 @@
     include_once("add-contr.class.php");
 
     $addContr = new AddContr($_REQUEST);
+
     $addContr->handleRequest();
 
+    $title = $addContr->getTitle();
 
-    // if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $ingredients = $addContr->getIngredients();
 
-    //     $title = htmlspecialchars($_POST["title"], ENT_QUOTES, 'UTF-8');
-    //     $ingredients = htmlspecialchars($_POST["ingredients"], ENT_QUOTES, 'UTF-8');
-        
-    //     $add = new AddContr($title, $ingredients);
-     
-    //     $errors = $add->validateForm();
-      
-    //     if(!$errors) {
-    //          $add->addPizza();
-    //          header("location: index.php?error=none");
-    //     }
-    // }
+    $errors = $addContr->getErrors();
 
 ?>
 

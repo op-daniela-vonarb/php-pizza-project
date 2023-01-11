@@ -21,13 +21,19 @@ class LoginContr extends Contr implements Controller {
 		}
 	}
 
-	public function UserData() {
-		if($this->requestParams && array_key_exists("uid", $this->requestParams)){
-			$uid = $this->requestParams['uid'];
-        	return $uid;
+	public function getUid() {
+		// check if it's empty
+		if(array_key_exists("uid", $this->requestParams)) {
+			return $this->requestParams['uid'];
 		}
+	}
 
-    }
+	public function getPwd() {
+		// check if it's empty
+		if(array_key_exists("pwd", $this->requestParams)) {
+			return $this->requestParams['pwd'];
+		}
+	}
 
 
     public function loginUser() {
