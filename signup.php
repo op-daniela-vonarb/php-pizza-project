@@ -3,10 +3,24 @@
     include_once "partials/header.php";
     include("autoload.php");
     include_once("signup-contr.class.php");
-
+   
     $signupContr = new SignupContr($_REQUEST);
 
     $signupContr->handleRequest();
+
+    $name = $signupContr->getName();
+
+    $uid = $signupContr->getUid();
+
+    $email = $signupContr->getEmail();
+
+    $pwd = $signupContr->getPwd();
+
+    $pwdRepeat = $signupContr->getPwdRepeat();
+
+    $errors = $signupContr->getErrors();
+
+   
      
 ?>
  
