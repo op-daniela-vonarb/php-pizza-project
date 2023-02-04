@@ -2,10 +2,11 @@
 
     include_once "partials/header.php";
 
-    include "classes/dbh.class.php";
-    include "classes/pizzas.class.php";
-    include "classes/pizzas-view.class.php"; 
-    include "includes/pizzas.inc.php"; 
+	include("autoload.php");
+	include_once("pizzas-contr.class.php");
+
+	$pizzaContr = new PizzasContr($_REQUEST);
+    $pizzaContr->handleRequest();
 
 ?>
 
@@ -16,7 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <?php foreach($pizzas as $pizza): ?>
+            <?php foreach($pizzaContr->Pizzas() as $pizza): ?>
 
                 <div class="col s6 md3">
                     <div class="card z-depth-0">
@@ -30,11 +31,11 @@
 							</ul>
                         </div>
                          <div class="card-action right-align">
-                            <!-- <a href="details.php?id=<?php //echo $pizza['id'] ?>" class="brand-text">more info</a> -->
-                            <form action="details.php" method="POST">
-                            <input type="hidden" name="id_to_details" value="<?php echo $pizza['id'] ?>">
+                            <a href="details.php?id=<?php echo $pizza['id'] ?>" class="brand-text">more info</a>
+                            <!-- <form action="details.php" method="POST">
+                            <input type="hidden" name="id_to_details" value="<?php //echo $pizza['id'] ?>">
                             <input type="submit" name="details" value="MORE INFO" class="btn brand z-depth-0">
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>

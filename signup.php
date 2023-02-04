@@ -1,40 +1,33 @@
 <?php
+
     include_once "partials/header.php";
-    // include "classes/signup-validator.class.php";
-    // include "classes/dbh.class.php";
-    // include "classes/signup.class.php";
-    // include "classes/signup-contr.class.php";
+    include("autoload.php");
+    include_once("signup-contr.class.php");
+   
+    $signupContr = new SignupContr($_REQUEST);
 
-    if(isset($_POST["submit"])) {
+    $signupContr->handleRequest();
 
-        include "classes/dbh.class.php";
-        include "classes/signup.class.php";
-        include "classes/signup-contr.class.php";
-        include "classes/signup-validator.class.php";
+    $name = $signupContr->getName();
 
-        $validation = new SignupValidator($_POST);
-        $errors = $validation->validateForm();      
-  
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $username = $_POST["uid"];
-        $pwd = $_POST["pwd"];
-        $pwdRepeat = $_POST["pwdrepeat"];
-    
-        if(!$errors){
-            $signup = new SignupContr($name, $email, $username, $pwd, $pwdRepeat);
-            $signup->signupUser();
-            header("location: index.php?error=none");
-        }
-    }
+    $uid = $signupContr->getUid();
 
+    $email = $signupContr->getEmail();
+
+    $pwd = $signupContr->getPwd();
+
+    $pwdRepeat = $signupContr->getPwdRepeat();
+
+    $errors = $signupContr->getErrors();
+
+   
      
 ?>
  
     <div class="index-login-signup">
         <h4>SIGN UP</h4>
         <p>Don't have an account yet? Sign up here!</p>
-        <form action="signup.php" method="POST">
+        <form method="POST">
 
             <input type="text" name="name"  value="<?php echo htmlspecialchars($name ?? '') ?>" placeholder="Full name...">
             <div class="error"><?php echo $errors['name'] ?? '' ?></div>
